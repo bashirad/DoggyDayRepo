@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html" />
+    <meta charset="utf-8" />
+  </head>
+  
+  
+  <body dir="auto"><br /><br />
+    <div dir="ltr">
+      <h1 style="color: #fac05e; font-family: Arial, sans-serif; font-weight:900; text-align:center">DoggyDay</h1>
+      {{#with user}}
+        <h2 style="text-align:center;font-family:Arial,sans serif;color:#fac05e; font-weight:900">Hey {{firstName}}, look at these DoggyDay neighbors near you!</h2>
+      {{/with}}
+      
+      <table cellpadding="0" cellspacing="0" border="0" align="center">
+  <tbody>
+  {{#each suggestedMatches}}
+  <tr>
+    <td style="padding: 20px 0;">
+      <table cellpadding="0" cellspacing="0" border="0" align="center">
+        <tr>
+          <td style="padding-right: 20px;">
+            <a href="{{profileUrl}}" target="_blank"><img src="{{photoUrl}}" width="150" alt="{{firstName}} {{lastName}}">
+          </td>
+          <td style="vertical-align: middle;">
+          <p style="margin: 0;font-weight: bold;">{{firstName}} {{lastName}}</p>
+          <p style="margin: 0;">{{#if zipCode}}
+                  	{{zipCode}}</p>
+           {{/if}}
+          <a href="{{profileUrl}}" target="_blank">DoggyDay profile</a><br/>
+           {{#if instagramUrl}}
+           <a href="{{instagramUrl}}" target="_blank">Instagram</a><br />
+           {{/if}}
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  {{/each}}
+</tbody>
+</table>
+      
+      <br />
+      <hr />
+<div style="font-family:Arial, Sans Serif; color:#4d5057; font-size: large">
+      <p>The next step is to invite the neighbor(s) you would like to meet.<br />Let us know below, and we will invite them for a 15-min casual Zoom call!</p>
+
+      <form
+        action="https://doggyday.co/matchform.php"
+        method="post"
+        target="_blank"
+      >
+        <span style="color:#4d5057">
+          <input name="email" type="hidden" value="{{user.email}}" />
+          <br />
+          <br />
+          <strong>Invite these neighbors to a 15-min Zoom:</strong>
+          <br />
+          {{#each suggestedMatches}}
+            <input name="neighbor[]" type="checkbox" value="{{userId}}" />
+            {{firstName}}
+            {{lastName}}
+            <br />
+          {{/each}}
+          <br />
+          <input style="color:#4d5057;background-color:#fac05e;border-radius:40px" type="Submit" value="Submit"/>
+        </span>
+      </form>
+
+      <br /><br />
+
+    <form action="https://doggyday.co/matchformno.php" method="get" target="_blank">
+  <span style="color:#4d5057">
+    <strong>Or - &#x1F449; let us know why not?</strong>
+    <br>
+    <input name="email" type="hidden" value="{{user.email}}">
+    <select name="neighbor" style="border-radius:25px;padding: 5px 0px 5px 5px">
+      <option value="NotEnough">Not enough choices</option>
+      <option value="NotGoodFit">Not a good fit</option>
+      <option value="TooFar">Too far</option>
+      <option value="Break">Pause DoggyDay for 1 month</option>
+      <option value="Never">No longer interested</option>
+    </select>
+    
+    <br><br>
+    <input style="color:#4d5057;background-color:#e4dfda;border-radius:40px" type="Submit" value="Submit">
+  </span>
+</form>
+</div>
+<br><br>
+
+<div style="background-color:#f6f6f6; color:#4d5057; padding:15px; border-radius:25px">
+<p><span style="font-size:small">
+Note: if you want to take a break from getting connected with DoggyDay neighbors, you can also let us know by going to your <a href="https://doggyday.co/dashboard.php" target="_blank">user dashboard</a>.<br /><br /> The 15-min Zoom call will be casual and informal, a quick way for you to meet virtually before meeting in-person. Ask whatever would help you decide, and share whatever you are comfortable with. We have also included a suggested list of topics to go over with your neighbor.<br/><br />Remember: there is no expectation or obligation to take or hand over any dogs. DoggyDay is a community of dog people and we are all here simply for our love of dogs. Please be respectful to your neighbors but you are only expected to do whatever you are comfortable doing.<br/><br />Happy days!
+      </span>
+      </p>
+
+
+<p style="text-align:center;color:#4d5057; font-size: small">Follow us!</p>
+<div id="social_icons" style="text-align:center">
+    <a href="https://www.instagram.com/doggyday.co" target="_blank"><img src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_instagram-512.png" width="25px" height="25px"/></a>
+    
+	&nbsp;&nbsp;&nbsp;&nbsp;
+    
+	<a href="https://www.facebook.com/doggy.day.co" target="_blank"><img src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_facebook-256.png" width="25px" height="25px"/></a>
+    
+	&nbsp;&nbsp;&nbsp;&nbsp;
+    
+	<a href="https://twitter.com/DoggyDayCo" target="_blank"><img src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_twitter-256.png" width="25px" height="25px"/></a>
+    
+</div>
+</div>
+
+<p style="font-size:x-small;color:#cdcdcd;">#{{timestamp}}</p>
+</div>
+
+  </body>
+</html>
