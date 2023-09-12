@@ -59,11 +59,20 @@ export const generateNewMatches = (
     // No users available or not enough users, cannot generate matches
     return [];
   }
+  const previousMatches = userMatchEvents.flatMap(event => event.matches);
+
+  // Exclude user IDs from previous matches
+  const excludedUsers = new Set(previousMatches.map(matchUser => matchUser.id));
 
   // Filter all valid users and sort them by comparator, with the rest in random order
   const isValidMatch = getIsValidMatch(user);
   const userComparator = getUserComparator(userMatchEvents);
-  //const allValidUsers = getUsersWithSameGroup(user, allUsers);
-  const sortedValidUsers = allUsers.filter(isValidMatch).sort(userComparator);
+  const sortedValidUsers = allUsers.filter(isValidMatch).filter(u => !excludedUsers.has(u.id)).sort(userComparator);
+  
+  if (sortedValidUsers.length < MIN_MATCH_COUNT) {
+    // No users available or not enough users, cannot generate matches
+    return [];
+  }
+  
   return sortedValidUsers.splice(0, 3);
 };

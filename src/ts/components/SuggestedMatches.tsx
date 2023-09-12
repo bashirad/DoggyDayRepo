@@ -46,26 +46,44 @@ const SuggestedMatches = ({ user, events }: SuggestedMatchesProps) => {
     regenerateMatches();
   }, [allUsers]);
 
-  return (
-    <div>
-      {user && !!suggestedMatches.length && (
-        <>
-          <SuggestedMatchesList
-            user={user}
-            matches={suggestedMatches}
-            regenerateMatches={regenerateMatches}
-          />
-          <SuggestedMatchesEmail
-            user={user}
-            suggestedMatches={suggestedMatches}
-          />
-        </>
-      )}
-      {allUsersLoading && (
-        <LoadingSpinner loadingText="Calculating new matches..." />
-      )}
-    </div>
-  );
+  if (suggestedMatches.length === 0) {
+    return (
+      <div className="card mt-4 mb-4">
+        <div className="card-body">
+          <h3 className="card-title">
+            Sorry! We Run Out of Matches
+          </h3>
+          <div className="row">
+            <div className="col-12">
+              <span className="fw-bold">Sorry: </span> Filtered users are empty
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  } 
+  else {
+      return (
+        <div>
+          {user && !!suggestedMatches.length && (
+            <>
+              <SuggestedMatchesList
+                user={user}
+                matches={suggestedMatches}
+                regenerateMatches={regenerateMatches}
+              />
+              <SuggestedMatchesEmail
+                user={user}
+                suggestedMatches={suggestedMatches}
+              />
+            </>
+          )}
+          {allUsersLoading && (
+            <LoadingSpinner loadingText="Calculating new matches..." />
+          )}
+        </div>
+      );
+  }
 };
 
 export default SuggestedMatches;
