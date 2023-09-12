@@ -64,8 +64,8 @@ const UserPage = () => {
           <SuggestedMatches user={user} events={userMatchEvents} />
           <UserMatchEventList events={userMatchEvents} />
 
-          {/* Print the user object */}
-          <pre>{JSON.stringify(user, null, 2)}</pre>
+          {/* Print the user object 
+          <pre>{JSON.stringify(user, null, 2)}</pre>*/}
             </>
           )}``
         </>

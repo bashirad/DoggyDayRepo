@@ -239,6 +239,25 @@ async listUsersForMatching({
     });
   }
 
+  async storeMatches2(
+    user: User,
+    matches: User[],
+    sentDate?: Date
+  ): Promise<Airtable.Record<Airtable.FieldSet>> {
+    return new Promise((resolve, reject) => {
+      const userMatch = this.mapper.createUserMatch(user, matches, sentDate);
+      this.airtableClient(TABLE_MATCHES_V4).create(
+        userMatch,
+        (error, record) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(record);
+          }
+        }
+      );
+    });
+  }
 
 }
 

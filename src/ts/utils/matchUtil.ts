@@ -22,14 +22,12 @@ const getUsersGroup = (user: User): string => {
 const getIsValidMatch =
   (user: User) =>
   (otherUser: User): boolean => {
-    console.log(`Checking match validity between ${user.userId} and ${otherUser.userId}`);
 
     const isValid = (
-                      (otherUser.userId !== user.userId) &&
+                      (otherUser.email !== user.email) &&
                       (user.role === "owner" || otherUser.role === "owner") &&
                       (user.groups === otherUser.groups)
                     );
-    console.log(`Result: ${isValid}`);
     return isValid;
     /**/
 };
