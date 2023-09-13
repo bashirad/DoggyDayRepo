@@ -14,10 +14,10 @@ export const validateAirtableConfig = async (
   }
   try {
     const airtableClient = createAirtableClient(config);
-    await airtableClient.table("SubscriptionRecordTest").select({ pageSize: 1 }).firstPage();
+    await airtableClient.table("SubscriptionRecord").select({ pageSize: 1 }).firstPage();
     return true;
   } catch {
-    // If fetching the table "SubscriptionRecordTest" failed, return false
+    // If fetching the table "SubscriptionRecord" failed, return false
   }
   return false;
 };

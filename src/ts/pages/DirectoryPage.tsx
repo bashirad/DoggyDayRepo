@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import {
-  SubscriptionRecordTestView,
+  SubscriptionRecordView,
   DoggyDayApiClientContext,
   DirectoryView,
 } from "../clients/DoggyDayApiClient";
@@ -16,7 +16,7 @@ const DirectoryPage = () => {
     setUsers([]);
     setUsersLoading(true);
     doggyDayClient
-      .listUsers({ view: SubscriptionRecordTestView.WEEKLY_ACTIVE })
+      .listUsers({ view: SubscriptionRecordView.WEEKLY_ACTIVE })
       .then((newUsers) => {
         setUsers(newUsers);
       })

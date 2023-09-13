@@ -4,26 +4,26 @@ import DoggyDayApiMapper, { RawUserMatch } from "./DoggyDayApiMapper";
 import { FullUser, User, /*UserForTable,*/ UserMatchEvent } from "./DoggyDayApi";
 import Airtable from "airtable";
 
-const TABLE_TEST = "SubscriptionRecordTest";
-const TABLE_DIRECTORY = "DirectoryTest";
+const TABLE_TEST = "SubscriptionRecord";
+const TABLE_DIRECTORY = "Directory";
 const TABLE_MATCHES_V4 = "Matches_v4";
 
 export interface DoggyDayClientProps {
   airtableConfig?: AirtableConfig;
 }
 
-export enum SubscriptionRecordTestView {
-  WEEKLY_ACTIVE = "viwPoxCUgdifKfDsc"
+export enum SubscriptionRecordView {
+  WEEKLY_ACTIVE = "viwYDQLXNo6b95Rwv"
 }
 
 export enum DirectoryView {
-  ALL_MEMBERS = "viwMhs93cxBHEOZg9",
-  MATCH_GROUP = "viwllRLPvvL3ujr2W"
+  ALL_MEMBERS = "viwBRbTx3Wz1Nlekq",
+  MATCH_GROUP = "viwaVAvjmUJnDQG6d"
 }
 
 
 export interface ListUsersProps {
-  view?: SubscriptionRecordTestView;
+  view?: SubscriptionRecordView;
   idFilter?: string[];
   userIdFilter?: string[];
 }
@@ -126,7 +126,7 @@ class DoggyDayApiClient {
   }
 
   async listUsers({
-    view = SubscriptionRecordTestView.WEEKLY_ACTIVE,
+    view = SubscriptionRecordView.WEEKLY_ACTIVE,
     idFilter = [],
     userIdFilter = [],
   }: ListUsersProps = {}): Promise<User[]> {

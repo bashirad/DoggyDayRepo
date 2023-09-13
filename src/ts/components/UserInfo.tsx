@@ -55,7 +55,7 @@ const UserInfo = ({ user }: UserInfoProps) => {
             <div className="row">
               <div className="col-4">
                 <span className="fw-bold">User ID:</span> {" "}
-                {maybeMissing(findUserByUserEmail(user.email).userId)}
+                {maybeMissing(findUserByUserEmail(user.email).userNo)}
               </div>
               <div className="col-4">
                 <span className="fw-bold">First Name:</span>{" "}
