@@ -40,10 +40,11 @@ const SuggestedMatches = ({ user, events }: SuggestedMatchesProps) => {
   
   const regenerateMatches = () => {
     const generatedMatches = generateNewMatches(user, events, allUsers);
-    setSuggestedMatches(generatedMatches);
+    setSuggestedMatches(generatedMatches.length > 0 ? generatedMatches : []);
   };
   useEffect(() => {
     regenerateMatches();
+    console.log("suggestedMatches ", suggestedMatches)
   }, [allUsers]);
 
   if (suggestedMatches.length === 0) {

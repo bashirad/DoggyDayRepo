@@ -49,6 +49,9 @@ const UserPage = () => {
       });
   }, [userId, doggyDayApiClient]);
 
+  console.log("user ", user);
+  console.log("userMatchEvents ", userMatchEvents);
+  
   return (
     <div>
       <h2>User</h2>
@@ -66,6 +69,7 @@ const UserPage = () => {
 
           {/* Print the user object 
           <pre>{JSON.stringify(user, null, 2)}</pre>*/}
+          
             </>
           )}``
         </>

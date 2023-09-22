@@ -63,7 +63,7 @@ const SuggestedMatchesEmail = ({
       const sentDate = new Date();
       //await apiClient.storeMatches(sentUser, sentMatches, sentDate);
       // get sentUser's id, and the 3 ids of the 3 sentmatches from here
-      const newIds = [sentUser.userNo, ...sentMatches.slice(0, 3).map(match => match.userId)];
+      const newIds = [sentUser.userId, ...sentMatches.slice(0, 3).map(match => match.userId)];
       setIds(newIds);
     };
   };

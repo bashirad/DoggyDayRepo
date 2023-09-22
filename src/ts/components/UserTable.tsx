@@ -27,7 +27,7 @@ const UserTable = ({ users }: UserTableProps) => {
             {users.map((member) => {
               return (
                 <tr>
-                  <td> {member.userNo}</td>
+                  <td> {member.userId}</td>
                   <td>{member.email}</td>
                   <td>{member.role}</td>
                   <td>{member.activity}</td>

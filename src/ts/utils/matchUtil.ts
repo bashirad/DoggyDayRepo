@@ -62,17 +62,22 @@ export const generateNewMatches = (
   const previousMatches = userMatchEvents.flatMap(event => event.matches);
 
   // Exclude user IDs from previous matches
-  const excludedUsers = new Set(previousMatches.map(matchUser => matchUser.id));
+  const excludedUsers = new Set(previousMatches.map(matchUser => matchUser.email));
 
   // Filter all valid users and sort them by comparator, with the rest in random order
   const isValidMatch = getIsValidMatch(user);
   const userComparator = getUserComparator(userMatchEvents);
-  const sortedValidUsers = allUsers.filter(isValidMatch).filter(u => !excludedUsers.has(u.id)).sort(userComparator);
-  
-  if (sortedValidUsers.length < MIN_MATCH_COUNT) {
+  const sortedValidUsersWithNoPrevMatches = allUsers.filter(isValidMatch).filter(u => !excludedUsers.has(u.email)).sort(userComparator);
+  const sortedValidUsers = allUsers.filter(isValidMatch).sort(userComparator);
+  console.log("Sorted valid users with NO previous matches are: ", sortedValidUsersWithNoPrevMatches);
+  console.log("Sorted valid users are: ", sortedValidUsers);
+  console.log("sortedValidUsersWithNoPrevMatches.length ", sortedValidUsersWithNoPrevMatches.length);
+
+  if (sortedValidUsersWithNoPrevMatches.length < MIN_MATCH_COUNT) {
     // No users available or not enough users, cannot generate matches
     return [];
   }
+  return sortedValidUsersWithNoPrevMatches.splice(0, 3);
+
   
-  return sortedValidUsers.splice(0, 3);
 };
