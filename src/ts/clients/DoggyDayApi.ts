@@ -19,6 +19,7 @@
     startDate: string;
     endDate: string;
     activePeriod: string;
+    sentMatches: string;
     firstName: string;
     lastName: string;
     role: UserRole;

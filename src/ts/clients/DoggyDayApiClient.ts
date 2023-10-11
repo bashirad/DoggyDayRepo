@@ -13,7 +13,8 @@ export interface DoggyDayClientProps {
 }
 
 export enum SubscriptionRecordView {
-  WEEKLY_ACTIVE = "viwYDQLXNo6b95Rwv"
+  WEEKLY_ACTIVE = "viwYDQLXNo6b95Rwv",
+  UI_VIEW = "viwttB7ItzzXVPw8G"
 }
 
 export enum DirectoryView {
@@ -126,7 +127,7 @@ class DoggyDayApiClient {
   }
 
   async listUsers({
-    view = SubscriptionRecordView.WEEKLY_ACTIVE,
+    view = SubscriptionRecordView.UI_VIEW,
     idFilter = [],
     userIdFilter = [],
   }: ListUsersProps = {}): Promise<User[]> {

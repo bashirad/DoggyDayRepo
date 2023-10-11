@@ -20,6 +20,7 @@ const UserTable = ({ users }: UserTableProps) => {
               <th scope="col">EndDate</th>
               <th scope="col">ActivePeriod</th>
               <th scope="col">Group</th>
+              <th scope="col">sentMatches</th>
               <th scope="col">Manage</th>
             </tr>
           </thead>
@@ -35,6 +36,7 @@ const UserTable = ({ users }: UserTableProps) => {
                   <td>{member.endDate}</td>
                   <td>{member.activePeriod}</td>
                   <td>{member.groups}</td>
+                  <td>{member.sentMatches}</td>
                   <td>
                     <Link to={`users/${member.id}`}>manage</Link>
                   </td>

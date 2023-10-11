@@ -29,6 +29,7 @@ class DoggyDayApiMapper {
       email: <string>record.get("Email"),
       role: <UserRole>record.get("Role"),
       activity: <string>record.get("Activity"),
+      sentMatches: <string>record.get("sentMatches"),
       startDate: <string>record.get("StartDate"),
       endDate: <string>record.get("EndDate"),
       activePeriod: <string>record.get("ActivePeriod"),

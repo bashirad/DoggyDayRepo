@@ -16,7 +16,7 @@ const DirectoryPage = () => {
     setUsers([]);
     setUsersLoading(true);
     doggyDayClient
-      .listUsers({ view: SubscriptionRecordView.WEEKLY_ACTIVE })
+      .listUsers({ view: SubscriptionRecordView.UI_VIEW })
       .then((newUsers) => {
         setUsers(newUsers);
       })
